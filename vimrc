@@ -22,7 +22,9 @@ set autochdir
 " paste. At the bottom you should see ``-- INSERT (paste) --``.
 
 set pastetoggle=<F2>
-set clipboard=unnamed
+set clipboard+=unnamed  " use the clipboards of vim and win
+"set paste               " Paste from a windows or from vim
+set go+=a               " Visual selection automatically copied to the clipboard
 
 
 " Mouse and backspace
@@ -142,7 +144,7 @@ set noswapfile
 "curl -so ~/.vim/autoload/pathogen.vim https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 " Now you can install any plugin into a .vim/bundle/plugin-name/ folder
 call pathogen#infect()
-
+call pathogen#helptags()
 
 
 " ============================================================================
@@ -180,7 +182,18 @@ set wildignore+=*/coverage/*
 " "" let g:pymode_syntax_builtin_objs = 0
 " "" let g:pymode_syntax_builtin_funcs = 0
 " "" map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
-"
+" Added by Felipe Lopez 14-10-2014
+" Documentation 
+let g:pymode_doc=1
+let g:pymode_doc_key= 'K'
+" Syntax highlighting 
+let g:pymode_syntax = 1
+let g:pymode_syntax_all = 1
+let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+let g:pymode_syntax_space_errors = g:pymode_syntax_all
+
+
+
 " Settings for jedi-vim
 "cd ~/.vim/bundle
 "git clone git://github.com/davidhalter/jedi-vim.git
@@ -188,6 +201,13 @@ let g:jedi#usages_command = "<leader>z"
 let g:jedi#popup_on_dot = 0
 let g:jedi#popup_select_first = 0
 map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
+
+
+"Setting for NerdTree
+map <F1> :NERDTreeToggle<CR>
+let NERDTreeMinimalUI=1
+let NERDTreeDirArrows=1
+
 
 " Better navigating through omnicomplete option list See http://stackoverflow.com/questions/2170023/how-to-map-keys-for-popup-menu-in-vim
 set completeopt=longest,menuone
